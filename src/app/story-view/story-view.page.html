@@ -1,9 +1,17 @@
 <ion-content>
-  <ion-slides>
-    <ion-slide *ngFor="let story of stories; index as i">
-      <div class="header" padding>
+  <ion-slides (ionSlideTransitionEnd)="getActiveIndex()">
+    <ion-slide *ngFor="let story of stories; index as ind">
 
-        <div >
+      <ion-grid class="pagination">
+        <ion-row>
+          <ion-col *ngFor="let intens of story.itens; index as i">
+            <div class="progress" #progress *ngIf="story.currentItem === i && activeIndex == ind"></div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <div class="header" padding>
+        <div>
           <img [src]="story.userPicture" alt="story do usuário">
           <div class="info" text-left>
             <span>{{story.userName}}</span>
@@ -12,7 +20,7 @@
         </div>
 
         <div (click)="closeActualStory()">
-            <ion-icon name="close-outline"></ion-icon>
+          <ion-icon name="close-outline"></ion-icon>
         </div>
 
       </div>

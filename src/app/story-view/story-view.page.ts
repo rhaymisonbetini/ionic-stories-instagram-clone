@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonSlides, ModalController, NavParams } from '@ionic/angular';
 import { Storyes } from '../models/stories.model';
 
 @Component({
@@ -9,8 +9,11 @@ import { Storyes } from '../models/stories.model';
 })
 export class StoryViewPage implements OnInit {
 
-  private stories:Array<Storyes>;
+  @ViewChild(IonSlides) slides: IonSlides;
+
+  private stories: Array<Storyes>;
   private index: number;
+  private activeIndex: number = 0;
 
   constructor(
     private modalController: ModalController,
@@ -20,12 +23,15 @@ export class StoryViewPage implements OnInit {
   ngOnInit() {
     this.stories = this.navParams.get('stories')
     this.index = this.navParams.get('tapped')
-    console.log(this.stories)
   }
 
+  getActiveIndex() {
+    this.slides.getActiveIndex().then((index: number) => {
+      this.activeIndex = index;
+    })
+  }
 
-
-  closeActualStory(){
+  closeActualStory() {
     this.modalController.dismiss()
   }
 
