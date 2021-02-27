@@ -1,27 +1,58 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+ion-toolbar {
+  --background: #f44e3f;
+  ion-title {
+    color: white;
+    text-align: center;
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+::-webkit-scrollbar-thumb {
+  background: white;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+::-webkit-scrollbar-thumb:window-inactive {
+  background: none;
 }
 
-#container a {
-  text-decoration: none;
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  .card {
+    display: inline-block;
+    padding-top: 10px;
+    color: #929292;
+
+    &.unseen {
+      color: #242424;
+
+      img {
+        box-shadow: 0px 0px 0px 2px #f44e3f;
+      }
+    }
+
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin: 5px;
+      border: 2px solid white;
+      box-shadow: 0px 0px 0px 2px #242424;
+    }
+
+    span {
+      display: block;
+      font-size: 12px;
+      text-align: center;
+      max-width: 60px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: bold;
+    }
+  }
 }

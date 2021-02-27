@@ -1,0 +1,21 @@
+<ion-content>
+  <ion-slides>
+    <ion-slide *ngFor="let story of stories; index as i">
+      <div class="header" padding>
+
+        <div >
+          <img [src]="story.userPicture" alt="story do usuário">
+          <div class="info" text-left>
+            <span>{{story.userName}}</span>
+            <span>{{story.itens[story.currentItem].date}}</span>
+          </div>
+        </div>
+
+        <div (click)="closeActualStory()">
+            <ion-icon name="close-outline"></ion-icon>
+        </div>
+
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
