@@ -8,11 +8,20 @@
     }
 }
 
+ion-slides {
+    height: 100% !important;
+    width: 100%;
+    ion-slide {
+        height: auto !important;
+    }
+}
+
 .pagination {
     position: absolute;
     top: 3px;
     left: 0px;
     width: 100%;
+    height: auto;
     z-index: 1;
 
     ion-col {
@@ -22,7 +31,8 @@
         padding: 0px;
         margin: 0px 3px 0px 3px;
 
-        .progress, .seen {
+        .progress,
+        .seen {
             height: 100%;
             background-color: #000;
         }
@@ -37,14 +47,16 @@
 }
 
 .header {
-    top: 0px;
+    position: relative;
+    color: whitesmoke;
+    top: -45%;
     left: 0px;
     width: 100%;
     font-size: 14px;
     display: flex;
     justify-content: space-between;
     z-index: 9999;
-
+    font-weight: bold;
     ion-icon {
         margin-right: 20px;
         height: 25px;
@@ -72,5 +84,31 @@
                 font-weight: bold;
             }
         }
+    }
+}
+
+#item {
+    position: absolute;
+    z-index: -9999;
+    width: 100% !important;
+    height: 100% !important;
+
+    img {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    ion-spinner {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+        margin: auto;
+    }
+
+    video {
+        max-width: 100%;
+        max-height: 100%;
     }
 }

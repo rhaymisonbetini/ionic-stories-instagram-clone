@@ -10,6 +10,14 @@ import { Storyes } from '../models/stories.model';
 export class StoryViewPage implements OnInit {
 
   @ViewChild(IonSlides) slides: IonSlides;
+  @ViewChild("progress") set progressElement(progress: any) {
+    if (progress) {
+      progress = progress.nativeElement;
+
+      progress.addEventListener("animationend", () => { this.nextStoryItem(); });
+      progress.addEventListener("webkitAnimationEnd", () => { this.nextStoryItem(); });
+    }
+  }
 
   private stories: Array<Storyes>;
   private index: number;
@@ -33,6 +41,11 @@ export class StoryViewPage implements OnInit {
 
   closeActualStory() {
     this.modalController.dismiss()
+  }
+
+
+  nextStoryItem(){
+    console.log('proximo')
   }
 
 }

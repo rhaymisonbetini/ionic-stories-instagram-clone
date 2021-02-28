@@ -5,6 +5,7 @@
       <ion-grid class="pagination">
         <ion-row>
           <ion-col *ngFor="let intens of story.itens; index as i">
+            <div class="seen" [hidden]="i >= story.currentItem"></div>
             <div class="progress" #progress *ngIf="story.currentItem === i && activeIndex == ind"></div>
           </ion-col>
         </ion-row>
@@ -18,11 +19,15 @@
             <span>{{story.itens[story.currentItem].date}}</span>
           </div>
         </div>
-
         <div (click)="closeActualStory()">
           <ion-icon name="close-outline"></ion-icon>
         </div>
+      </div>
 
+
+      <div id="item" *ngFor="let item of story.itens; let index = index" [hidden]="story.currentItem != index">
+        <ion-spinner [hidden]="item.type == 0"></ion-spinner>
+        <img [src]="item.media" [alt]="'Story de' + story.userName" [hidden]="item.type != 0">
       </div>
     </ion-slide>
   </ion-slides>
